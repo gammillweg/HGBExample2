@@ -1,5 +1,5 @@
 # HGBExample2
-Draws the hive. (It does nothing else.)
+Draws the hive. (It does nothing else.)  (See issue: I am going to add zoom)
 
 There are many files in an Android Studio project. Only those changed are uploaded.
 
