@@ -1,0 +1,2 @@
+rootProject.name='HGBExample2'
+include ':app'
