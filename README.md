@@ -1,5 +1,7 @@
 # HGBExample2
-Draws the hive. (It does nothing else.)  (See issue: I am going to add zoom)
+Draws the hive. (It does nothing else.) 
+I added Zoom in and out -- this demonstrates change cell size
+(see issue:  addRings  -- this will demonstrate enlarging and making smaller)
 
 There are many files in an Android Studio project. Only those changed are uploaded.
 
