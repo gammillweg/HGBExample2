@@ -91,6 +91,25 @@ public class MainActivity extends AppCompatActivity
             case R.id.zoomOut:
                this.zoomOut();
                return true;
+
+            case R.id.expand:
+               this.expand();
+               return true;
+
+            case R.id.contract:
+               this.contract();
+               return true;
+
+            case R.id.report:
+               report();
+               return true;
+
+            case R.id.numberCells:
+               dbNumberCellsFlg = !dbNumberCellsFlg;
+               graphicsView.setDBNumberCellsFlg(dbNumberCellsFlg);
+               graphicsView.invalidate();
+               return true;
+
              default:
                return super.onOptionsItemSelected(item);
          }
@@ -125,6 +144,53 @@ public class MainActivity extends AppCompatActivity
       //graphicsView.clearCollectTouchedCells();
       gameBoardSetup.initHive();
       graphicsView.invalidate();
+   }
+
+   public void expand()
+   {
+      int roseRings = shared.getRoseRings();
+      roseRings++;
+
+      int maxRoseRings = shared.getMaxRoseRings();
+      roseRings = (roseRings >= maxRoseRings) ? maxRoseRings : roseRings;
+      shared.setRoseRings(roseRings);
+
+      //graphicsView.clearCollectTouchedCells();
+      gameBoardSetup.initHive();
+      graphicsView.invalidate();
+   }
+
+   public void contract()
+   {
+      int roseRings = shared.getRoseRings();
+      roseRings--;
+
+      roseRings = (roseRings < 0) ? 0 : roseRings;
+      shared.setRoseRings(roseRings);
+
+      //graphicsView.clearCollectTouchedCells();
+      gameBoardSetup.initHive();
+      graphicsView.invalidate();
+   }
+
+   public void report()
+   {
+      // This will compute the number of cells
+      //int total = hgbShared.getCellAryLen();
+      //int val = total/10;
+      //int waste = val * 3;
+      //int cells = total - waste;
+
+      // But the count is stored and can be retrieved
+      int cells = hgbShared.getCellCount();
+
+      //double cellSize = hgbShared.getCellSize();
+      int roses = hgbShared.getRoseCount();
+      int rings = hgbShared.getRoseRings();
+
+      //String msg = cells + " cells " + roses + " roses " + rings + " rings,  Cell size:  " + cellSize;
+      String msg = rings + " rings, " + roses + " roses, " + cells + " cells"; //, Cell size: " + cellSize;
+      Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
    }
 
 }

@@ -2,4 +2,8 @@
     <string name="app_name">HGBExample2</string>
     <string name="zoomIn">Zoom In</string>
     <string name="zoomOut">Zoom Out</string>
+    <string name="expand">Expand</string>
+    <string name="contract">Contract</string>
+    <string name="report">Report</string>
+    <string name="numberCells">Toggle Number Cells</string>
 </resources>
