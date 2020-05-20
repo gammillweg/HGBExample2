@@ -3,4 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.hgbexample.MainActivity">
 
+    <item
+        android:id="@+id/zoomIn"
+        android:orderInCategory="0"
+        android:title="@string/zoomIn"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/zoomOut"
+        android:orderInCategory="1"
+        android:title="@string/zoomOut"
+        app:showAsAction="always"/>
 </menu>

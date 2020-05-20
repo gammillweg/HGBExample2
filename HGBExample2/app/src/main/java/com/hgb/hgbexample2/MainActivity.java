@@ -84,6 +84,13 @@ public class MainActivity extends AppCompatActivity
       {
          switch (item.getItemId())
          {
+            case R.id.zoomIn:
+               this.zoomIn();
+               return true;
+
+            case R.id.zoomOut:
+               this.zoomOut();
+               return true;
              default:
                return super.onOptionsItemSelected(item);
          }
@@ -93,6 +100,31 @@ public class MainActivity extends AppCompatActivity
          Log.e("FatalError:  ", excp.toString());
          return false;
       }
+   }
+
+   public void zoomIn()
+   {
+      double cellSize = shared.getCellSize();
+      cellSize += shared.getZoomStep();
+      shared.setCellSize(cellSize);
+
+      // in testAddUnits() the old path is cleared and a new path for each
+      // unit created and a new unityPath is created (as a combination of each unit path)
+
+      //graphicsView.clearCollectTouchedCells();
+      gameBoardSetup.initHive();
+      graphicsView.invalidate();
+   }
+
+   public void zoomOut()
+   {
+      double cellSize = shared.getCellSize();
+      cellSize -= shared.getZoomStep();
+      shared.setCellSize(cellSize);
+
+      //graphicsView.clearCollectTouchedCells();
+      gameBoardSetup.initHive();
+      graphicsView.invalidate();
    }
 
 }

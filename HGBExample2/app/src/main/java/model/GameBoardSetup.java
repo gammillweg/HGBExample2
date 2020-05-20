@@ -62,7 +62,7 @@ public class GameBoardSetup
    /**
     * Initialize all hive data
     */
-   private void initHive()
+   public void initHive()
    {
       // Important: Rose 0 and it's 6 petals is counted as ring 1.
       // It follows ...

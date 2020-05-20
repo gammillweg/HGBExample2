@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HGBExample2</string>
+    <string name="zoomIn">Zoom In</string>
+    <string name="zoomOut">Zoom Out</string>
 </resources>
