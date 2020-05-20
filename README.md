@@ -1,17 +1,13 @@
 # HGBExample2
-Draws the hive. (It does nothing else.) 
+Draws the hive. Menu picks to zoom in/out and change number of cells
+
 I added Zoom in and out -- this demonstrates change cell size
-(see issue:  addRings  -- this will demonstrate enlarging and making smaller)
 
-There are many files in an Android Studio project. Only those changed are uploaded.
-
-HGBExample.zip created via Android Studio menu File->"Export to Zip File".
-
-Repositories yet to be written (each build will build on the previous)
+(see issue:  addRings  -- this will demonstrate changing the number of cells)
 
 TBD: HGBExample3: Will translate the hive and fill chosen cells with color.
 
-The code for all of the above exists in repository HGB:HGBExample.zip. 
+The code for the above exists in repository HGB:HGBExample.zip. 
 But HGBExample.zip is somewhat overburdened. It is salvaged code form a game I worked on. 
 The examples TBD above will be clean with better comments and specific to the task.
 
