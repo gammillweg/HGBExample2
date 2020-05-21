@@ -4,6 +4,7 @@ import android.graphics.Path;
 
 import hgb.HGBCellPack;
 import hgb.HGBGenerateHive;
+import hgb.HGBLocator;
 import hgb.HGBShared;
 import hgb.HGBUtils;
 
@@ -17,17 +18,11 @@ public class GameBoardSetup
    // Should be the only instance of HGBLocator.
    // Other calls should pass through HGBUtils or HGBShared
    // But here the locator must be initialized
-
-   // Locator is not used in Example2
-   // private HGBLocator hgbLocator = null;
+   private HGBLocator hgbLocator = null;
    private HGBUtils hgbUtils = null;
 
    private Path basePath = null;
    private Path hivePath = null;
-
-   // Not used in Example2
-   //private RectF baseInscribedRect = null;
-   //private RectF baseSuberscribedRectF = null;
 
    //-----------------------------------------
    private Shared shared = null;  // Common data
@@ -94,7 +89,7 @@ public class GameBoardSetup
 
       // Set for horizontal ordination of the device.
       // (OrientationRadians.Landscape)
-      // Support orientation Portrait was never written.
+      // Support for orientation Portrait was never written.
       hgbShared.setVertexRadians(HGBShared.OrientationRadians.Landscape);
 
       // set the default cellSize, pass it onto hgbHexBase() and
@@ -114,15 +109,11 @@ public class GameBoardSetup
       }
 
       // generateHive gets roseRings and size of cell from hgbShared.
-      // and... hgbShared gets roseRings and cellSize from gameShared
+      // and... hgbShared gets roseRings and cellSize from Shared
       hgbGenerateHive.generateHive_Main();
 
       // Gets roseRings and hiveOrigin and from hgbShared (which gets
       // roseRings and cellSize and hiveOrigin from shared
-
-/*
-      // The locator is not used in Example2
-      // The locator is code to find touched cells.
 
       // The locator can not be created until the hive has been generated.
       // Is passed to shared for distribution.
@@ -135,7 +126,7 @@ public class GameBoardSetup
          hgbShared.setHGBUtils(hgbUtils);
       }
       hgbLocator.locatorInitialize();
-*/
+
 
       createHivePath();
    }
@@ -144,7 +135,7 @@ public class GameBoardSetup
     * Copy the basePath about to each cell:  offset each per the
     * origin of each.  Each offset cell is added to the hivePath
     *
-    * The return is storing the path in shared
+    * The return is a stored the path in shared
     */
    private void createHivePath()
    {

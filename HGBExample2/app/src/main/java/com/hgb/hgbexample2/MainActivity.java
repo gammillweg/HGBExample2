@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity
       gameBoardSetup = new GameBoardSetup();
 
       if (shared != null) { shared = null; }
+
+      // The One and Only One instance of Shared is created in
+      // GameBoardSetup, stored in Shared, and passed back here
+      // to pass on down to GraphicView.
       shared = gameBoardSetup.gameBoardInitialize();
       if (shared == null) return false;
 
@@ -75,9 +79,6 @@ public class MainActivity extends AppCompatActivity
    @Override
    public boolean onOptionsItemSelected(MenuItem item)
    {
-      // Handle action bar item clicks here. The action bar will
-      // automatically handle clicks on the Home/Up button, so long
-      // as you specify a parent activity in AndroidManifest.xml.
       int id = item.getItemId();
 
       try
@@ -105,9 +106,7 @@ public class MainActivity extends AppCompatActivity
                return true;
 
             case R.id.numberCells:
-               dbNumberCellsFlg = !dbNumberCellsFlg;
-               graphicsView.setDBNumberCellsFlg(dbNumberCellsFlg);
-               graphicsView.invalidate();
+               numberCells();
                return true;
 
              default:
@@ -127,10 +126,7 @@ public class MainActivity extends AppCompatActivity
       cellSize += shared.getZoomStep();
       shared.setCellSize(cellSize);
 
-      // in testAddUnits() the old path is cleared and a new path for each
-      // unit created and a new unityPath is created (as a combination of each unit path)
-
-      //graphicsView.clearCollectTouchedCells();
+      graphicsView.clearCollectTouchedCells();
       gameBoardSetup.initHive();
       graphicsView.invalidate();
    }
@@ -141,7 +137,7 @@ public class MainActivity extends AppCompatActivity
       cellSize -= shared.getZoomStep();
       shared.setCellSize(cellSize);
 
-      //graphicsView.clearCollectTouchedCells();
+      graphicsView.clearCollectTouchedCells();
       gameBoardSetup.initHive();
       graphicsView.invalidate();
    }
@@ -155,7 +151,7 @@ public class MainActivity extends AppCompatActivity
       roseRings = (roseRings >= maxRoseRings) ? maxRoseRings : roseRings;
       shared.setRoseRings(roseRings);
 
-      //graphicsView.clearCollectTouchedCells();
+      graphicsView.clearCollectTouchedCells();
       gameBoardSetup.initHive();
       graphicsView.invalidate();
    }
@@ -168,8 +164,15 @@ public class MainActivity extends AppCompatActivity
       roseRings = (roseRings < 0) ? 0 : roseRings;
       shared.setRoseRings(roseRings);
 
-      //graphicsView.clearCollectTouchedCells();
+      graphicsView.clearCollectTouchedCells();
       gameBoardSetup.initHive();
+      graphicsView.invalidate();
+   }
+
+   public void numberCells()
+   {
+      dbNumberCellsFlg = !dbNumberCellsFlg;
+      graphicsView.setDBNumberCellsFlg(dbNumberCellsFlg);
       graphicsView.invalidate();
    }
 

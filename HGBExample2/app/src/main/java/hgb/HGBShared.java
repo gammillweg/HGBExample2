@@ -8,7 +8,7 @@ import java.util.Arrays;
 // (Of course, I don't really understand what a Singleton is, so what do I know about a
 // sudo Singleton :-) )
 
-// This class is meant to me create ONCE and only ONCE in the main Activity (or other higher
+// This class is meant to be create ONCE and only ONCE in the main Activity (or other higher
 // method and passed on down through parameters; such that only this ONE class is used.
 // It is a common access storage location.  Many classes store their results here to be
 // accessed as needed by other classes without access to the worker class.

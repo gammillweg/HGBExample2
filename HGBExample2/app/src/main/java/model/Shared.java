@@ -2,6 +2,7 @@ package model;
 
 import android.graphics.Path;
 
+import hgb.HGBLocator;
 import hgb.HGBShared;
 
 /*
@@ -45,10 +46,9 @@ public class Shared
    private HGBShared hgbShared = null;
    public HGBShared getHGBShared() { return hgbShared; }
 
-   //HGBLocator is not used in Example2
-   //private HGBLocator hgbLocator = null;
-   //public void setHGBLocator(HGBLocator hgbLocator) { this.hgbLocator = hgbLocator; }
-   //public HGBLocator getHGBLocator() { return hgbLocator; }
+   private HGBLocator hgbLocator = null;
+   public void setHGBLocator(HGBLocator hgbLocator) { this.hgbLocator = hgbLocator; }
+   public HGBLocator getHGBLocator() { return hgbLocator; }
 
    //==================== Hive Data =====================
    private int defaultRoseRings;
