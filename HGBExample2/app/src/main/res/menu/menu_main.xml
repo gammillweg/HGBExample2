@@ -23,9 +23,14 @@
         android:orderInCategory="3"
         android:title="@string/contract"
         app:showAsAction="always"/>
+     <item
+        android:id="@+id/fill"
+        android:orderInCategory="4"
+        android:title="Fill"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/report"
-        android:orderInCategory="4"
+        android:orderInCategory="5"
         android:title="Report"
         app:showAsAction="always"/>
     <item

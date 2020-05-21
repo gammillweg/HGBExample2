@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity
                this.contract();
                return true;
 
+            case R.id.fill:
+               this.fill();
+               return true;
+
             case R.id.report:
                report();
                return true;
@@ -166,6 +170,15 @@ public class MainActivity extends AppCompatActivity
 
       graphicsView.clearCollectTouchedCells();
       gameBoardSetup.initHive();
+      graphicsView.invalidate();
+   }
+
+   public void fill()
+   {
+      if (graphicsView.demoFillCellsBetween() == false)
+      {
+         Toast.makeText(this, "Need two selected cells.", Toast.LENGTH_SHORT).show();
+      }
       graphicsView.invalidate();
    }
 

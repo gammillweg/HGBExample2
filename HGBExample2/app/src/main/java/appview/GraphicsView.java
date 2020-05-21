@@ -19,6 +19,7 @@ import androidx.core.view.GestureDetectorCompat;
 import hgb.HGBCellPack;
 import hgb.HGBShared;
 import hgb.HGBUtils;
+import model.PlotCourse;
 import model.Shared;
 
 public class GraphicsView extends View
@@ -231,7 +232,7 @@ public class GraphicsView extends View
          cellPath.addPath(basePath, org[0], org[1]);
 
          int origColor = paint.getColor();
-         paint.setColor(Color.RED);
+         paint.setColor(Color.MAGENTA);
          paint.setStyle(Paint.Style.FILL);
          canvas.drawPath(cellPath, paint);
 
@@ -239,15 +240,14 @@ public class GraphicsView extends View
          paint.setStyle(Paint.Style.STROKE);
       }
       // ----------------------------------------------
-
    }
 
-   private void debugFillCells(Canvas canvas/*, Paint paint, int cell*/)
+   private void debugFillCells(Canvas canvas)
    {
       int origColor = paint.getColor();
       paint.setColor(Color.RED);
       paint.setStyle(Paint.Style.FILL);
-      //canvas.drawPath(cellPath, paint);
+      //canvas.drawPath(cellPath, paint)p
 
       // DEBUG... show here how to fill a cell
       for (int index : collectTouchedCells)
@@ -261,6 +261,22 @@ public class GraphicsView extends View
          canvas.drawPath(cellPath, paint);
       }
    }
+
+   //=================================================================
+   public boolean demoFillCellsBetween()
+   {
+      PlotCourse plotCourse = new PlotCourse(shared);
+      ArrayList<Integer> courseAL = plotCourse.getCourse(collectTouchedCells);
+      if (courseAL.size() == 0) return false;
+      for (int index : courseAL)
+      {
+         float[] org = hgbUtils.getCellOrigin(index);
+         cellPath.addPath(basePath, org[0], org[1]);
+       }
+      return true;
+   }
+
+
    //=================================================================
 
    protected void onTranslateHive(Matrix matrix, float dx, float dy)

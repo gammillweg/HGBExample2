@@ -2,13 +2,16 @@
 
 HGBExample2 is considerably more complex than HGBExample1.  It draws
 the hive, has menu picks to zoom in/out, expand/contract (the size of
-the hive), toggle the cell ID's on/off, and show a report.  one can
-also move the hive about, and can pick cells which are filled with a color.
+the hive), fill between last picks, toggle the cell ID's on/off,  and
+show a report.  one can also move the hive about, and can pick cells
+which are filled with a color.
 
 Zoom In/Out:  demo's change cell size.  (And note the lines quality
 remains constant.)
 
 Expand/Contract:  demo's add/remove rings  (add/remove cells).
+
+Fill: demo's how to find ones way from cell to cell.
 
 Report: show the of number cell, roses and rose rings
 
