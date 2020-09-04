@@ -8,6 +8,8 @@ import java.lang.reflect.Array;
 // That was a needless complexity to the program and cause problems 
 // with "stale" bitter ends.  This class is a rewrite of that.  
 // Here, if the array is made smaller, it's stale allocation is nulled.
+// With the expectation that Java will clean it us.  (Were I in C++,
+// I would destory the bitter ends.)
 
 // cellAry is allocated in blocks of 10, only 7 of which are used
 // (the other 3 left empty (null) and wasted.)

@@ -36,7 +36,8 @@ public class HGBBonding
 			int[] range = progressions.roseRingRange(roseRing);
 			int roseCnt = ((range[1] - range[0]) / 10) + 1;
 
-			// There are three vectors per rose in the rose ring, except the 6 rose ring vertices, which only contain 2 vectors each.
+			// There are three vectors per rose in the rose ring,
+         // except the 6 rose ring vertices, which only contain 2 vectors each.
 			int vectorCnt = (roseCnt * 3) - 6;
 			//------------------------------------------------------
 

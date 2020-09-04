@@ -3,11 +3,67 @@ package hgb;
 // A helper class for HGB
 public class HGBProgressions
 {
+	//========================================================================================
+   // simple counting of roses and cells
+   
+ 	// Count the number of roses by roseRing
+	// NOTE: Rose 0 is COUNTED as a rose ring, thus rose ring 1 is cell 0,
+   // rose ring 2 is cells 10-60, and ring 3 cells 70-180 ), 4 cells 190-360 for a total of 37 roses.
+   // (And, as there are 7 cells per rose, 4 rings will contain 259 cells.)
+	protected int countAllRoses(int roseRings)
+	{
+		int roseCnt = 0;
+		for (int inx = 0; inx < roseRings; inx++)
+		{
+			roseCnt += countRosesPerRing(inx);
+		}
+		return roseCnt;
+	}
+	
+	protected int countRosesPerRing(int roseRing)
+	{
+		int[] range = roseRingRange(roseRing);
+		return ((range[1] - range[0]) / 10) + 1;
+		// int[] roseIndicesAry = progressions.rosesPerRing(range);
+		// return roseIndicesAry.length;
+	}
+	
+	/**
+	 * Compute the cell indices (a simple incremental loop). (Recall that roses
+	 * are in increments of 10 (from 0) and there 6 sides around each rose for
+	 * a total of 7 cells.)
+	 * 
+	 * @return an array of cell indices exclusive of unused array indecies
+     *        (Does not include unused cells cell 10 is stored in rtn[7]
+	 */
+	protected int[] getCellIndices(int roseRings)
+	{
+		int roseCnt = countAllRoses(roseRings);
+		int[] cellIndices = new int[roseCnt * (HGBShared.SIDES + 1)];
+		int roseIndex;
+		int index = 0;
+		for (int inx = 0; inx < roseCnt; inx++)
+		{
+			roseIndex = inx * 10;
+			for (int side = 0; side < HGBShared.SIDES + 1; side++)
+			{
+				cellIndices[index++] = roseIndex + side;
+			}
+		}
+
+		return cellIndices;
+	}
+
 	// The return is a int array of length == 2, where  
 	//	[0] = the first rose in the rose ring
 	// [1] = the last rose in the rose ring
-	// rose ring == 0 is special:  [0] = 0, and [1] = 0;
+   // rose ring == 1: will return [0]==10, [1]==60
+   // as 10 is the fist rose and 60 the last rose in the ring
+   // (Note that the results never change.  Rose ring 1 will always return
+   // [0]==10, [1]==60.  I chose to calculate rather than look up constants.)
+	// rose ring == 0 is special:  [0] = 0, and [1] = 0 will be returned
 	// as rose ring == 0 is not a true rose ring, rather the center of a rose
+   // Rose ring 0 has peddles 1-6
 	protected int[] roseRingRange(int roseRing)
 	{
 		// This is a very short counting loop.  It would be very nice
@@ -39,6 +95,7 @@ public class HGBProgressions
 	
 	// Return all roses with the provided range in a single rose ring
 	// including start and stop
+   // input [0] start rose, [1] stop rose (see roseRingRange())
 	protected int[] rosesPerRing(int[] range)
 	{
 		if (range.length != 2) return null;
@@ -69,6 +126,9 @@ public class HGBProgressions
 		}
 		return roses;
 	}
+
+	//========================================================================================
+   // Finding vectors for location of cells
 	
 	// The progression of the rose rings vectors origins by their origin vertex.
 	// The return is a HashMap where the key is an Integer rose index
@@ -253,7 +313,8 @@ public class HGBProgressions
 		int[] range = roseRingRange(roseRing);
 		int roseCnt = ((range[1] - range[0]) / 10) + 1;
 		
-		// There are three vectors per rose in the rose ring, except the 6 rose ring vertices, which only contain 2 vectors each.
+		// There are three vectors per rose in the rose ring,
+      // except the 6 rose ring vertices, which only contain 2 vectors each.
 		int vectorCnt = (roseCnt * 3) - 6;
 		int[][] vectorPetalAry = new int[vectorCnt][];
 		
@@ -384,8 +445,7 @@ public class HGBProgressions
 	// for this call.)
 	// The two:  originVertices() and originRosePairs() are dependent and their returns
 	// are used together -- marching down their returned arrays of equal length.
-
-	protected int[][] originRosePairs(int roseRing, int[] vertices)
+ int[][] originRosePairs(int roseRing, int[] vertices)
 	{
 		// The length of array int[] vertices returned from originVertices() is used 
 		// to define the length of the return rosePairs to insure that the two arrays
@@ -454,56 +514,6 @@ public class HGBProgressions
 		
 		return rosePairs;
 	}
-	
-	// Count the number of roses by roseRing
-	// NOTE: Rose 0 is COUNTED as a rose ring, thus rose ring 1 is 0, 2 is
-	// 10-60, 3 70-80, 4 190-360
-	// for a total of 37 roses.
-	protected int countAllRoses(int roseRings)
-	{
-		int roseCnt = 0;
-		for (int inx = 0; inx < roseRings; inx++)
-		{
-			roseCnt += countRosesPerRing(inx);
-		}
-		return roseCnt;
-	}
-	
-	protected int countRosesPerRing(int roseRing)
-	{
-		int[] range = roseRingRange(roseRing);
-		return ((range[1] - range[0]) / 10) + 1;
-		// int[] roseIndicesAry = progressions.rosesPerRing(range);
-		// return roseIndicesAry.length;
-	}
-	
-	//========================================================================================
-	/**
-	 * Compute the cell indices (a simple incremental loop). (Recall that roses
-	 * are in increments of 10 (from 0) and there 6 sides around each rose for
-	 * a total of 7 cells.)
-	 * 
-	 * @return an array of cell indices exclusive of unused array indecies
-     *        (Does not include unused cells cell 10 is stored in rtn[7]
-	 */
-	protected int[] getCellIndices(int roseRings)
-	{
-		int roseCnt = countAllRoses(roseRings);
-		int[] cellIndices = new int[roseCnt * (HGBShared.SIDES + 1)];
-		int roseIndex;
-		int index = 0;
-		for (int inx = 0; inx < roseCnt; inx++)
-		{
-			roseIndex = inx * 10;
-			for (int side = 0; side < HGBShared.SIDES + 1; side++)
-			{
-				cellIndices[index++] = roseIndex + side;
-			}
-		}
-
-		return cellIndices;
-	}
-
 }
 
 

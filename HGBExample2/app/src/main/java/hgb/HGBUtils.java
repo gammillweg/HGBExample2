@@ -8,6 +8,9 @@ import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+// Much of the content here has nothing to do with creating a hive, rather
+// for code using the the contents of the hive.
+
 // Authors note on a little inefficiency here:
 // I originally thought it might be useful to know the order of the cells in the
 // rings around the center cell.  So, I wrote getRingsAroundAry() returning a
@@ -58,7 +61,7 @@ public class HGBUtils
 
    private HGBShared hgbShared;
    //private HGBRingsAround hgbRingsAround = null;
-   private HGBProgressions hgbProgressions = null;
+   private HGBProgressions  hgbProgressions = null;
    private HGBLocator hgbLocator = null;
 
    //------------------------------------------------

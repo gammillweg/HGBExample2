@@ -10,11 +10,6 @@ public final class HGBStatics
 	// (The side opposite of 0 is 3; 1 is 4 etc)
 	public static final int[] oppositeSides = { 3, 4, 5, 0, 1, 2 };
 
-	// NOT USED
-	// The vertex opposite the vertex index into the array.
-	// (The vertex opposite vertex 2 is 4.)
-	// public static final int[] oppositeVertices = {2, 3, 4, 5, 0, 1};
-
 	// The number of radius's between a vertex of a rose and the
 	// origin of another rose
 	protected static final int radiiBetweenRoses = 4;

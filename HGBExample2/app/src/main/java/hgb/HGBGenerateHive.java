@@ -7,8 +7,8 @@ package hgb;
 //The work here and calls to Classes Progressions and Bonding
 //Is all stored in HGBShared.cellAry packaged in class CellPack.
 //Here, HGBShared.cellAry is allocated and insured that it is of sufficient
-//size to hold the BondPacks created (see HGBShared.allocateCellAry()).
-//Then empty BondPacks are created and stored in HGBShared.cellAry.
+//size to hold the CellPacks created (see HGBShared.allocateCellAry()).
+//Then empty CellPacks are created and stored in HGBShared.cellAry.
 //All necessary roseRings are created out to the farthest edge.
 
 

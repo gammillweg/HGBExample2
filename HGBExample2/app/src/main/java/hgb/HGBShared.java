@@ -8,8 +8,8 @@ import java.util.Arrays;
 // (Of course, I don't really understand what a Singleton is, so what do I know about a
 // sudo Singleton :-) )
 
-// This class is meant to be create ONCE and only ONCE in the main Activity (or other higher
-// method and passed on down through parameters; such that only this ONE class is used.
+// This class is meant to me create ONCE and only ONCE in the main Activity (or other higher
+// method and passed on down through parameters; such that only this ONE and ONLY ONE instance exists.
 // It is a common access storage location.  Many classes store their results here to be
 // accessed as needed by other classes without access to the worker class.
 
@@ -96,7 +96,7 @@ public class HGBShared
       return hgbUtils;
    }
 
-	private HGBLocator hgbLocator = null;
+	private  HGBLocator hgbLocator = null;
 	public void setHGBLocator(HGBLocator hgbLocator)
 	{
 		this.hgbLocator = hgbLocator;
@@ -110,7 +110,7 @@ public class HGBShared
 	// When filled with instances of CellPack, there are wasted members
 	// in the array.  Each Rose contains 7 hexagons (cells) (The center 
 	// and 6 petals); but roses increment by 10's.  Hence, indices 0, 1-6 
-	// are filled with instances of BondPacks and 7,8 and 9 are left null.)
+	// are filled with instances of CellPacks and 7,8 and 9 are left null.)
 	
 	protected HGBCellPack[] cellAry = null;
 	
@@ -118,7 +118,7 @@ public class HGBShared
 	public int getCellAryLen() { return cellAry.length; }
 
    // if cellIndex == -1 return null;
-	public HGBCellPack getCellPack(int cellIndex)
+	public HGBCellPack getCellPack(int cellIndex) 
 	{
 		////--if (cellIndex > cellAryLen ) { cellIndex = cellAryLen; }
 		if (cellIndex > cellAry.length ) { cellIndex = cellAry.length; }
@@ -191,15 +191,12 @@ public class HGBShared
 				originRadiansAry = HGBStatics.originRadiansLandscape;
 				break;
 			
-/*
-			   // Code to support Portrait was never written
 			case Portrait:
 				vertexRadiansAry = HGBStatics.vertexRadiansPortrait;
 				normalRadiansAry = HGBStatics.normalRadiansPortrait;
 				originRadiansAry = HGBStatics.originRadiansPortrait;
 				break;
-*/
-
+				
 			default:
 				vertexRadiansAry = HGBStatics.vertexRadiansLandscape;
 				normalRadiansAry = HGBStatics.normalRadiansLandscape;

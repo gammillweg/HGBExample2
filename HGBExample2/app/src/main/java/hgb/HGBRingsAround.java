@@ -6,6 +6,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Hashtable;
 
+/*
+ * The following code does nothing to help create the hive.  Rather is provides
+ * some idea as to how to find surrounding cells for game purposes... as in radar.
+ */
+
 /**
  * Created by weg  2/12/2016 - 2/22/2016
  * HGBRingsAround class will find all the cells in concentric hexagon rings around a provided cell.

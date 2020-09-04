@@ -8,6 +8,8 @@ import hgb.HGBLocator;
 import hgb.HGBShared;
 import hgb.HGBUtils;
 
+// This class will create a Hexagon game board hive.
+
 public class GameBoardSetup
 {
    private final String TAG = this.getClass().getSimpleName();
@@ -31,7 +33,7 @@ public class GameBoardSetup
 
    /**
     * Begins a chain of calls to create the hive and a hivePath
-    * to allow the graphics of the drawn.
+    * to allow the graphics for appview.GraphicsVies.onDraw()
     *
     * @return instance of Shared
     */
@@ -69,6 +71,7 @@ public class GameBoardSetup
       // why I needed roseRing = 4 to generate 3 rings. I was NOT
       // properly counting rose 0 as a ring.)
 
+      // this.roseRings = 1; // 7 cells, arrayLen
       // this.roseRings = 2; // 49 cells, arrayLen 70
       // this.roseRings = 3; // 133 cells, arrayLen 190
       // this.roseRings = 4; // 259 cells, arrayLen 370
@@ -76,6 +79,11 @@ public class GameBoardSetup
       // this.roseRings = 6; // 637 cells, arrayLen 910
       // this.roseRings = 7; // 889 cells, arrayLen 1270
 
+      // In this example, Shared.defaultRoseRings = 4.
+
+      // One can not set the number of rose rings hers
+      // (via shared.setRoseRings(n) as menu Expand and Contract
+      // call here and a set here would overwrite their set.
       // ------------------------------------------
 
       // ----------------
@@ -89,7 +97,7 @@ public class GameBoardSetup
 
       // Set for horizontal ordination of the device.
       // (OrientationRadians.Landscape)
-      // Support for orientation Portrait was never written.
+      // !!Support for orientation Portrait was never written.!!
       hgbShared.setVertexRadians(HGBShared.OrientationRadians.Landscape);
 
       // set the default cellSize, pass it onto hgbHexBase() and
@@ -165,12 +173,13 @@ public class GameBoardSetup
          hivePath.addPath(basePath, origin[0], origin[1]);
       }
 
-      // Store the hivePath in shared
+      // Store the hivePath and basePath in shared
       shared.setHivePath(hivePath, basePath);
    }
 
    /**
-    * Create a single base hexagon
+    * Create a single base hexagon path
+    * The base path is stored in Shared (see createHivePah())
     */
    private void createBaseSingleHexagonPath()
    {

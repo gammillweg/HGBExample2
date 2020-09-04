@@ -76,9 +76,12 @@ public class Shared
    public int getRoseRings() { return roseRings; }
    public void setRoseRings(int roseRings)
    {
+      // Insure rules are obeyed (max and min number of roses)
       this.roseRings = roseRings;
       if (roseRings > this.maxRoseRings) this.roseRings = this.maxRoseRings;
       if (roseRings < 0) this.roseRings = 0;
+
+      // Pass on through the HGB
       hgbShared.setRoseRings(roseRings);
    }
 

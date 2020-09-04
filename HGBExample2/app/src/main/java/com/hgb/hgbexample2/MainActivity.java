@@ -191,6 +191,9 @@ public class MainActivity extends AppCompatActivity
 
    public void report()
    {
+
+
+
       // This will compute the number of cells
       //int total = hgbShared.getCellAryLen();
       //int val = total/10;

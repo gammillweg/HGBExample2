@@ -4,6 +4,11 @@ import java.util.Arrays;
 
 //This class is created and stored in HGBShared.cellAry with index as the key.
 //This class stores data about hexagon cells.
+
+// Each Cell has it's data stored in its personal instance of HGBCellPack.
+// HGBShared.cellAry stores each instance of HGBCellPack
+// HGBCellPack is access through cellAry via an index
+// (Note that cellAry contains null members)
 public class HGBCellPack
 {
 	protected HGBCellPack()
